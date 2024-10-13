@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan Tampilan Halaman</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: white;
+        color: black;
+      }
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ubah Tampilan Halaman</h1>
+
+    <!-- Dropdown untuk warna background -->
+    <label for="bg-color">Pilih Warna Background:</label>
+    <select id="bg-color">
+      <option value="white">Putih</option>
+      <option value="lightblue">Biru Muda</option>
+      <option value="lightgreen">Hijau Muda</option>
+      <option value="lightcoral">Merah Muda</option>
+    </select>
+
+    <!-- Slider untuk ukuran font -->
+    <label for="font-size">Ukuran Font:</label>
+    <input type="range" id="font-size" min="12" max="36" value="16" />
+
+    <!-- Tombol mode gelap/terang -->
+    <button id="toggle-dark-mode">Mode Gelap</button>
+
+    <!-- Tombol untuk mengubah gaya font -->
+    <button id="change-font">Ubah Gaya Font</button>
+
+    <p>
+      Ini adalah contoh teks. Anda dapat mengubah warna background, ukuran font,
+      mode, dan gaya font dari halaman ini.
+    </p>
+
+    <script>
+      const bgColorSelector = document.getElementById("bg-color");
+      const fontSizeSlider = document.getElementById("font-size");
+      const toggleDarkModeButton = document.getElementById("toggle-dark-mode");
+      const changeFontButton = document.getElementById("change-font");
+      let isSerif = false;
+
+      // Ubah warna background
+      bgColorSelector.addEventListener("change", function () {
+        document.body.style.backgroundColor = bgColorSelector.value;
+      });
+
+      // Ubah ukuran font
+      fontSizeSlider.addEventListener("input", function () {
+        document.body.style.fontSize = fontSizeSlider.value + "px";
+      });
+
+      // Toggle mode gelap/terang
+      toggleDarkModeButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          toggleDarkModeButton.textContent = "Mode Terang";
+        } else {
+          toggleDarkModeButton.textContent = "Mode Gelap";
+        }
+      });
+
+      // Ubah gaya font
+      changeFontButton.addEventListener("click", function () {
+        if (isSerif) {
+          document.body.style.fontFamily = "sans-serif";
+        } else {
+          document.body.style.fontFamily = "serif";
+        }
+        isSerif = !isSerif;
+      });
+    </script>
+  </body>
+</html>
